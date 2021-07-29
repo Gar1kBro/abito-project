@@ -1,6 +1,4 @@
 body {
-    /* position: relative;
-    height: 100%; */
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     color: #0A143A;
@@ -15,6 +13,12 @@ body {
     padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 12px;
+}
+
+.navbar-panel {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 .navbar {
@@ -63,6 +67,62 @@ body {
     
 }
 
+.burger {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    z-index: 10;
+}
+
+.burger__line {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    transition: transform .2s ease;
+}
+
+.burger__line::before, 
+.burger__line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #000;
+}
+
+.burger__line::before {
+    top: -7px;
+}
+
+.burger__line::after {
+    top: 7px;
+    left: auto;
+    right: 0;
+    width: 20px;
+}
+
+.active .burger__line {
+    transform: rotate(45deg);
+}
+
+.active .burger__line::before  {
+    top: 0;
+    transform: rotate(-90deg);
+}
+
+.active .burger__line::after  {
+    opacity: 0;
+}
+
 .search-panel {
     height: 50px;
     background: #256EEB;
@@ -97,22 +157,20 @@ body {
 .page-content {
     display: grid;
     grid-template-columns: 9fr 3fr;
-    grid-column-gap: 30px;
+    grid-column-gap: 10px;
 }
 
 .cards  {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
 }
 
 .card {
     margin-bottom: 20px;
-}
-
-.card:not(:nth-child(3n)) {
     margin-right: 20px;
 }
+
+
 
 .card-heder {
     max-width: 264px;
@@ -225,7 +283,6 @@ body {
     text-align: center;
     font-size: 18px;
     background: #fff;
-
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -363,3 +420,137 @@ body {
     background-color: #14B4BE;
     color:#fff;
 }
+
+@media (max-width : 1200px) {
+    .container {
+        max-width:  960px;
+    }
+
+    .card {
+        width: 45%;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .card-heder {
+        max-width: 100%;
+    }
+
+    .content {
+        margin-right: 20px;
+    }
+
+    .img-cont {
+        width: 100%;
+    }
+}
+
+@media (max-width : 992px) {
+    .container {
+        max-width: 740px;
+    }
+
+    .card-img {
+        height: 150px;
+    }
+
+    .main-single {
+        display: block;
+    }
+
+}
+
+@media (max-width : 768px) { 
+    .container {
+        max-width: 560px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .page-content {
+        grid-template-columns: 8fr 4fr;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .navbar-panel {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 9;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform .2s ease, opacity .2s ease;
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    .open {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .navbar-menu {
+        margin-left: auto;
+        margin-bottom: 20px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-item:not(:last-child) {
+        padding-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .single-content {
+        display: block;
+    }
+
+    .content {
+        max-width: 560px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width : 567px) { 
+    .container {
+        max-width: 90%;
+    }
+
+    .page-content {
+        grid-template-columns: 12fr;
+     }
+
+     .card-img {
+        height: 250px;
+    }
+
+    .card {
+        margin-right: 0;
+    }
+
+    .search-button-text {
+        display: none;
+    }
+
+} 
